@@ -1,12 +1,12 @@
 import cv2
 import numpy as np
-import tensorflow as tf
+from tensorflow.keras import models
 from PIL import Image
 
 class CNN():
     def __init__(self, model, labels) -> None:
         self.labels = labels
-        self.model = tf.keras.models.load_model(model)
+        self.model = models.load_model(model)
 
     def predict(self, image):
         Image.open(image).save("img.png")

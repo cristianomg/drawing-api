@@ -1,4 +1,5 @@
 import json
+from waitress import serve
 from flask import Flask, jsonify, request
 
 from flask_cors import CORS
@@ -27,4 +28,4 @@ def test():
     return jsonify('ok');
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port='80', debug=False)
+    serve(app, host='0.0.0.0', port=80, threads=1) #WAITRESS!

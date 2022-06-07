@@ -11,20 +11,20 @@ class CNN():
     def predict(self, image):
         Image.open(image).save("img.png")
 
-        img = Image.open(image)
+        img = Image.open('img.png')
         img = np.array(img)[:, :, 3]
 
-        imagecv2 = cv2.resize(img, (28,28))
+        opencvImage = cv2.resize(img, (28, 28))
 
-        predict = self.model.predict(imagecv2.reshape(-1, 28, 28, 1))[0]
+        predict = self.model.predict(opencvImage.reshape(1, 28, 28))
 
         print(predict)
 
-        return self.__get_predicted_label(predict)
+        return self.__get_predicted_label(predict[0])
 
     def __get_predicted_label(self, predict):
         max_predict = predict.max();
         print(max_predict);
-        if (predict.max() > 0.9):
-            return self.labels[np.argmax(predict)]
-        return 'Não foi possivel reconhecer esse desenho.'
+        if (predict.max() * 100 > 90):
+            return "Seu desenho é um " + self.labels[np.argmax(predict)]
+        return 'Não sei qual é o seu desenho tente novamente.'

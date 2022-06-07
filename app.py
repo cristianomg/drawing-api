@@ -5,10 +5,10 @@ from flask_cors import CORS
 
 from model.CNN import CNN
 
-labels = ['airplane', 'banana', 'bee',
-              'coffee cup' , 'crab', 'guitar',
-              'hamburger', 'rabbit', 'truck',
-              'umbrella']
+labels = ['avião', 'banana', 'abelha',
+              'xícara de café' , 'caranguejo', 'guitarra',
+              'hamburger', 'coelho', 'caminhão',
+              'guarda chuva']
 
 cnn = CNN('./model/model.h5', labels)
 
